@@ -15,7 +15,28 @@
             <h1>Library</h1>
         </div>
         <div class="container">
-            <button class="add-book">+ Add a new book +</button>
+            <div id="form-container">
+                <form> 
+                 <fieldset>
+                     <legend>Name</legend>
+                    <label for="book-name"></label>
+                    <input type="text" id="book-name" name="book-name">
+                </fieldset>
+                <fieldset>
+                    <legend>Author</legend>
+                    <label for="author"></label>
+                    <input type="text" id="author" name="author">
+                </fieldset>
+                <fieldset>
+                    <legend>Pages</legend>
+                    <label for="pages"></label>
+                    <input type="number" id="pages" name="pages">
+                </fieldset>
+                    <button class="add-book">Add book</button>
+
+                </form>
+            </div>
+            <button class="book">+ ADD A NEW BOOK +</button>
         </div>
         <div class="footer">
             <h3><a href="https://github.com/budy6991/">@budy6991</a></h3>

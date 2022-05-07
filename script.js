@@ -45,6 +45,8 @@ btnAddBook.onclick = function (e){
   inputAuthor.value = ''
   inputPages.value = ''
 
+  console.log(myLibrary)
+
   let newCard = document.createElement('div')
   let bookName = document.createElement('p')
   let authorName = document.createElement('p')
@@ -60,6 +62,7 @@ btnAddBook.onclick = function (e){
 
   myLibrary.forEach(book => {
     for (let key in book) {
+
       bookName.textContent = (`Name: ${Object.values(book)[0]}`) 
       authorName.textContent = (`Author: ${Object.values(book)[1]}`) 
       pagesNumber.textContent = (`Pages: ${Object.values(book)[2]}`) 
@@ -74,8 +77,13 @@ btnAddBook.onclick = function (e){
       newCard.appendChild(removeButton)
       container.appendChild(newCard)
 
-      console.log(newCard) 
 
+      removeButton.onclick = function (e){
+        let index = myLibrary.indexOf(book)
+        myLibrary.splice(index, 1)
+        console.log(myLibrary)
+        newCard.remove(book)
+      }
       
     }
     
@@ -95,9 +103,7 @@ btnAddBook.onclick = function (e){
 
   /*------Remove card------ */ 
 
-  removeButton.onclick = function (e){
-    console.log(key)
-  }
+  
 
 }
 

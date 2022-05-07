@@ -95,9 +95,13 @@ btnAddBook.onclick = function (e){
 
     if (e.target.style.backgroundColor == 'green') {
       e.target.style.backgroundColor = 'white'
+      e.target.style.color = 'black'
     }
 
-    else {e.target.style.backgroundColor = 'green'}
+    else {
+      e.target.style.backgroundColor = 'green'
+      e.target.style.color = 'white'
+  }
 
   }
 

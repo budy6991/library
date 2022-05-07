@@ -64,18 +64,19 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 #form-container {
     margin: 3em;
-    padding: 1em;
+    padding: 1rem;
     grid-column: 5/6;
-    
     display: none;
     border: solid #292524 3px;
     border-radius: 10px;
     background-image: linear-gradient( #292524, rgb(126, 126, 126), #292524);
-    
+    position: absolute;
+    right: 0;
 }
 
 #form-container > * {
@@ -114,12 +115,44 @@ form > button {
 /*----------Cards----------- */ 
 
 .new-card {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-content: center;
+    grid-template-rows: repeat(4,1fr);
+    grid-template-columns: repeat(2,1fr);
     margin: 20%;
+    padding: 1rem;
     color: white;
-    
+    border: solid #292524 3px;
+    border-radius: 10px;
+    background-image: linear-gradient( #292524, rgb(126, 126, 126), #292524);
+
+    height: auto;
+}
+
+.new-card p {
+    font-size: small;
+    display: grid;
+    align-items: center;
+    grid-column: 1/3 ;
+
+}
+
+.toggle-button {
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+
+.remove-button {
+    grid-column: 2/3;
+    grid-row: 4/5;
+    background-color: rgb(251, 52, 52);
+    color: rgb(53, 53, 53);
+}
+
+.toggle-button, .remove-button {
+    border-radius: 50%;
+    border-style: none;
 }
 
 /*----------Footer----------- */ 

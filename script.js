@@ -15,11 +15,12 @@ function addBookToLibrary(storeBook) {
 const btn = document.querySelector('.book')
 const formContainer = document.getElementById('form-container')
 
+
 btn.onclick = function () {
   
   if (formContainer.style.display == "none" || formContainer.style.display.length == 0) {
     formContainer.style.display = "inline-block";
-   
+  
   } else {
     formContainer.style.display = "none";
 
@@ -43,23 +44,67 @@ btnAddBook.onclick = function (e){
   inputName.value = ''
   inputAuthor.value = ''
   inputPages.value = ''
+
   let newCard = document.createElement('div')
+  let bookName = document.createElement('p')
+  let authorName = document.createElement('p')
+  let pagesNumber = document.createElement('p')
+  let toggleButton = document.createElement('button')
+  let removeButton = document.createElement ('button')
+
   newCard.classList.add('new-card')
-  
+  toggleButton.classList.add('toggle-button')
+  removeButton.classList.add('remove-button')
+
+  /*----------Inserting the values of the inputs----------- */ 
+
   myLibrary.forEach(book => {
     for (let key in book) {
-      newCard.textContent = ( `Name: ${Object.values(book)[0]} Author: ${Object.values(book)[1]} Pages: ${Object.values(book)[2]}` )
+      bookName.textContent = (`Name: ${Object.values(book)[0]}`) 
+      authorName.textContent = (`Author: ${Object.values(book)[1]}`) 
+      pagesNumber.textContent = (`Pages: ${Object.values(book)[2]}`) 
       
+      toggleButton.textContent = '✔'
+      removeButton.textContent = 'X'
+
+      newCard.appendChild(bookName)
+      newCard.appendChild(authorName)
+      newCard.appendChild(pagesNumber)
+      newCard.appendChild(toggleButton)
+      newCard.appendChild(removeButton)
       container.appendChild(newCard)
 
-      console.log(newCard)
+      console.log(newCard) 
 
-        
+      
     }
+    
   })
-
   
-
+  /*------Switch status to read/ unread------ */ 
   
+  toggleButton.onclick = function (e) {
+
+    if (e.target.style.backgroundColor == 'green') {
+      e.target.style.backgroundColor = 'white'
+    }
+
+    else {e.target.style.backgroundColor = 'green'}
+
+  }
+
+  /*------Remove card------ */ 
+
+  removeButton.onclick = function (e){
+    console.log(key)
+  }
+
 }
+
+
+
+
+
+
+
 

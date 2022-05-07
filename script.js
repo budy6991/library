@@ -32,14 +32,34 @@ const btnAddBook = document.querySelector('.add-book')
 const inputName = document.getElementById('book-name')
 const inputAuthor = document.getElementById('author')
 const inputPages = document.getElementById('pages')
-
+const container = document.querySelector('.container')
 
 
 btnAddBook.onclick = function (e){
   e.preventDefault();
   let storeBook = new Book (inputName.value , inputAuthor.value, inputPages.value)
   addBookToLibrary(storeBook)
-  console.log(storeBook)
-  console.log(myLibrary)
+  formContainer.style.display = 'none'
+  inputName.value = ''
+  inputAuthor.value = ''
+  inputPages.value = ''
+  let newCard = document.createElement('div')
+  newCard.classList.add('new-card')
+  
+  myLibrary.forEach(book => {
+    for (let key in book) {
+      newCard.textContent = ( `Name: ${Object.values(book)[0]} Author: ${Object.values(book)[1]} Pages: ${Object.values(book)[2]}` )
+      
+      container.appendChild(newCard)
+
+      console.log(newCard)
+
+        
+    }
+  })
+
+  
+
+  
 }
 

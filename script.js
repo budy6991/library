@@ -12,31 +12,35 @@ function addBookToLibrary(storeBook) {
 
 /*----------Pressing the add Button----------- */ 
 
-const btn = document.querySelector('.book')
-const formContainer = document.getElementById('form-container')
+  const btn = document.querySelector('.book')
+  const formContainer = document.getElementById('form-container')
 
+  btn.onclick = function () {
+    
+    // Makes the form-container visible/invisible
 
-btn.onclick = function () {
-  
-  if (formContainer.style.display == "none" || formContainer.style.display.length == 0) {
-    formContainer.style.display = "inline-block";
-  
-  } else {
-    formContainer.style.display = "none";
+    if (formContainer.style.display == "none" || formContainer.style.display.length == 0) {
+      formContainer.style.display = "inline-block";
+    
+    } else {
+      formContainer.style.display = "none";
 
-  }
-};
+    }
+  };
 
 /*----------Pressing the addBook Button----------- */ 
 
-const btnAddBook = document.querySelector('.add-book')
-const inputName = document.getElementById('book-name')
-const inputAuthor = document.getElementById('author')
-const inputPages = document.getElementById('pages')
-const container = document.querySelector('.container')
+    const btnAddBook = document.querySelector('.add-book')
+    const inputName = document.getElementById('book-name')
+    const inputAuthor = document.getElementById('author')
+    const inputPages = document.getElementById('pages')
+    const container = document.querySelector('.container')
 
 
 btnAddBook.onclick = function (e){
+
+  // Takes the value of the input an parse it to the constructor
+
   e.preventDefault();
   let storeBook = new Book (inputName.value , inputAuthor.value, inputPages.value)
   addBookToLibrary(storeBook)
@@ -46,6 +50,8 @@ btnAddBook.onclick = function (e){
   inputPages.value = ''
 
   console.log(myLibrary)
+
+  //Creates the slots in the card ***
 
   let newCard = document.createElement('div')
   let bookName = document.createElement('p')
@@ -63,12 +69,16 @@ btnAddBook.onclick = function (e){
   myLibrary.forEach(book => {
     for (let key in book) {
 
+      // Takes the inputs and place them in the card
+
       bookName.textContent = (`Name: ${Object.values(book)[0]}`) 
       authorName.textContent = (`Author: ${Object.values(book)[1]}`) 
       pagesNumber.textContent = (`Pages: ${Object.values(book)[2]}`) 
       
       toggleButton.textContent = '✔'
       removeButton.textContent = 'X'
+
+      // Attaches the slots to the card ***
 
       newCard.appendChild(bookName)
       newCard.appendChild(authorName)
@@ -77,6 +87,7 @@ btnAddBook.onclick = function (e){
       newCard.appendChild(removeButton)
       container.appendChild(newCard)
 
+      /*------Remove card------ */ 
 
       removeButton.onclick = function (e){
         let index = myLibrary.indexOf(book)
@@ -101,15 +112,7 @@ btnAddBook.onclick = function (e){
     else {
       e.target.style.backgroundColor = 'green'
       e.target.style.color = 'white'
-  }
-
-  }
-
-  /*------Remove card------ */ 
-
-  
-
-}
+  }}}
 
 
 

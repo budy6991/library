@@ -1,10 +1,27 @@
 let myLibrary = [];
 
-function Book(name, author, pages) {
+function Book(name, author, pages, read) {
   this.name = name
   this.author = author
   this.pages = pages 
+  this.read = read
+  this.toggleRead = function (){
+
+    if (this.read == 'Yes') {
+      this.read = 'No'
+    }
+
+    else if (this.read == 'No') {
+      this.read = 'Yes'
+    }
+  }
+  
 }
+
+function changeStatus (){
+  console.log(this.name)
+}
+
 
 function addBookToLibrary(storeBook) {
     myLibrary.push(storeBook)
@@ -42,15 +59,14 @@ btnAddBook.onclick = function (e){
   // Takes the value of the input an parse it to the constructor
 
   e.preventDefault();
-  let storeBook = new Book (inputName.value , inputAuthor.value, inputPages.value)
+  let storeBook = new Book (inputName.value , inputAuthor.value, inputPages.value, 'No')
   addBookToLibrary(storeBook)
   formContainer.style.display = 'none'
   inputName.value = ''
   inputAuthor.value = ''
   inputPages.value = ''
 
-  console.log(myLibrary)
-
+  
   //Creates the slots in the card ***
 
   let newCard = document.createElement('div')
@@ -59,6 +75,8 @@ btnAddBook.onclick = function (e){
   let pagesNumber = document.createElement('p')
   let toggleButton = document.createElement('button')
   let removeButton = document.createElement ('button')
+
+  
 
   newCard.classList.add('new-card')
   toggleButton.classList.add('toggle-button')
@@ -75,6 +93,9 @@ btnAddBook.onclick = function (e){
       authorName.textContent = (`Author: ${Object.values(book)[1]}`) 
       pagesNumber.textContent = (`Pages: ${Object.values(book)[2]}`) 
       
+      toggleButton.style.backgroundColor = 'white'
+      toggleButton.style.color = 'black'
+
       toggleButton.textContent = '✔'
       removeButton.textContent = 'X'
 
@@ -107,11 +128,17 @@ btnAddBook.onclick = function (e){
     if (e.target.style.backgroundColor == 'green') {
       e.target.style.backgroundColor = 'white'
       e.target.style.color = 'black'
+      storeBook.toggleRead()
+      console.log(storeBook)
+      console.log(myLibrary)
     }
 
     else {
       e.target.style.backgroundColor = 'green'
       e.target.style.color = 'white'
+      storeBook.toggleRead()
+      console.log(storeBook)
+      console.log(myLibrary)
   }}}
 
 

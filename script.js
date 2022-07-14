@@ -59,7 +59,16 @@ function addBookToLibrary(storeBook) {
 
 btnAddBook.onclick = function (e){
 
-  // Takes the value of the input an parse it to the constructor
+  if (
+    inputName.validity.valueMissing ||
+    inputAuthor.validity.valueMissing||
+    inputPages.validity.valueMissing
+  ) {
+    e.preventDefault()
+    alert('Please fill out all of the fields')
+    console.log(myLibrary)
+  } else {  
+  
 
   e.preventDefault();
   let storeBook = new Book (inputName.value , inputAuthor.value, inputPages.value, 'No')
@@ -145,7 +154,7 @@ btnAddBook.onclick = function (e){
   }}}
 
 
-
+}
 
 
 
